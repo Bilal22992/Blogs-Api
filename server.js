@@ -22,9 +22,24 @@ app.listen(3000,(req,res)=>{
 })
 
 app.get("/",(req,res)=>{
+   
+    blogs=getDataFromFile();
+    if(blogs.length==0)
+    {
+        res.json("No Blogs present")
+    }
     const random = Math.floor(Math.random()*blogs.length);
-    console.log(blogs)
     res.json(blogs[random])
+})
+app.get("/all",(req,res)=>{
+   
+    blogs=getDataFromFile();
+    if(blogs.length==0)
+    {
+        res.json("No Blogs present")
+    }
+    
+    res.json(blogs)
 })
 //Posting APi
 app.post("/blogs",(req,res)=>{
@@ -107,11 +122,14 @@ console.log(blogs.length)
     blogs=getDataFromFile();
     const identity=parseInt(req.params.id);
     
-
-    const blogidentity = blogs.findIndex(blog => blog.id=identity);
-   
-    blogs.splice(blogs[blogidentity],1)
+console.log(identity);
+console.log(blogs.length);
+    const blogidentity = blogs.findIndex(blog => blog.id===identity);
+   console.log(blogidentity);
+   res.json(blogs[blogidentity]);
+    blogs.splice(blogidentity,1);
+    
     saveDataToFile(blogs);
-    res.json(blogs[blogidentity]);
+    
  })
 // var blogs=[{id:1,author:"moon",text:"hello"},];

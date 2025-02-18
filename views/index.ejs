@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Blog</title>
+</head>
+<body>
+    <%if(data && Array.isArray(data) && data.length > 0) { %> 
+        
+       <% data.forEach(item => {%>
+        <form action="/all" method="post">
+          
+        <p> <%=item.id  %>,<%= item.author %> </p>
+        <input  type="submit" value="Delete" formaction="/delete/<%= item.id %>">
+        <input  type="submit" value="Edit" formaction="/edit/<%= item.id %>">
+    </form>
+    <%}); %>
+        <% } else {%>
+        <p>No blogs to show</p>
+        <% } %>
+       
+     
+   
+    
+</body>
+</html>

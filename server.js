@@ -21,6 +21,16 @@ app.listen(3000,(req,res)=>{
     console.log("Server Running Successfully");
 })
 
+app.get("/:id",(req,res)=>{
+  const identity= parseInt(req.params.id);
+    blogs=getDataFromFile();
+    if(blogs.length==0)
+    {
+        res.json("No Blogs present")
+    }
+   const blog= blogs.find(blog => blog.id===identity);
+    res.json(blog);
+})
 app.get("/",(req,res)=>{
    
     blogs=getDataFromFile();
@@ -28,17 +38,7 @@ app.get("/",(req,res)=>{
     {
         res.json("No Blogs present")
     }
-    const random = Math.floor(Math.random()*blogs.length);
-    res.json(blogs[random])
-})
-app.get("/all",(req,res)=>{
-   
-    blogs=getDataFromFile();
-    if(blogs.length==0)
-    {
-        res.json("No Blogs present")
-    }
-    
+    console.log(blogs.length);
     res.json(blogs)
 })
 //Posting APi
@@ -91,7 +91,7 @@ console.log(blogs.length)
         author:req.body.author,
         text:req.body.text
     }
-    console.log(blogs);
+    console.log(update);
     const blogidentity = blogs.findIndex(blog => blog.id=identity);
     
 

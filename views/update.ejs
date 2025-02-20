@@ -6,12 +6,12 @@
     <title>Post</title>
 </head>
 <body>
-    <form action="/post" method="post">
+    <form action="/update/<%= res.id %>" method="post">
 <label for="author">Author</label>
-<input  %> type="text" name="author">
+<input value=<%= res.author %> type="text" name="author">
 <label for="text">text</label>
-<input  type="text" name="text">
-<input type="submit" value="Post">
+<input value="<%= res.text %>" type="text" name="text">
+<input type="submit" value="update">
     </form>
 </body>
 </html>

@@ -35,7 +35,7 @@ app.post("/edit/:id", async (req,res)=>{
     // console.log(identity);
     const response = await axios.get(`http://localhost:3000/${identity}`);
     console.log(response.data)
-    res.render("post.ejs",{res:response.data})
+    res.render("update.ejs",{res:response.data})
 
 
 })
@@ -58,4 +58,15 @@ app.post("/update/:id", async(req,res)=>{
         console.log(error.message)
     }
    
+})
+app.get("/postPage",(req,res)=>{
+    res.render("post.ejs");
+})
+app.post("/post", async (req,res)=>{
+    const iauthor = req.body.author;
+    const itext= req.body.text;
+
+    const response = await axios.post("http://localhost:3000/blogs",{author:iauthor,text:itext},{headers:{"Content-Type":'application/x-www-form-urlencoded'}});
+    console.log(response.data)
+    res.redirect("/");
 })

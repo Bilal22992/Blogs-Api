@@ -6,12 +6,13 @@
     <title>Blog</title>
 </head>
 <body>
+    <button><a href="/postPage">Post a blog</a> </button>
     <%if(data && Array.isArray(data) && data.length > 0) { %> 
         
        <% data.forEach(item => {%>
         <form action="/all" method="post">
           
-        <p> <%=item.id  %>,<%= item.author %> </p>
+        <p> <%=item.id  %>,<%= item.author %> <%= item.text %></p>
         <input  type="submit" value="Delete" formaction="/delete/<%= item.id %>">
         <input  type="submit" value="Edit" formaction="/edit/<%= item.id %>">
     </form>

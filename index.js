@@ -33,9 +33,9 @@ app.post("/delete/:id", async (req,res)=>{
 })
 app.post("/edit/:id", async (req,res)=>{
     const identity = parseInt(req.params.id);
-    // console.log(identity);
+    console.log(identity);
     const response = await axios.get(`http://localhost:3000/${identity}`);
-    console.log(response.data)
+    // console.log(response.data)
     res.render("update.ejs",{res:response.data})
 
 
@@ -52,7 +52,7 @@ app.post("/update/:id", async(req,res)=>{
             headers: {
               'Content-Type': 'application/x-www-form-urlencoded'
             }});
-        console.log(response.data)
+        // console.log(response.data)
     console.log(req.body.author+req.body.text);
         res.redirect("/")
     } catch (error) {

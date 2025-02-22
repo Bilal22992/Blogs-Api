@@ -1,0 +1,25 @@
+.container{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    width: 800px;
+    margin-left: 30%;
+}
+.Navbar{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100vw;
+    height: 40px;
+    background-color: rgb(4, 4, 34);
+}
+.Navbar button{
+    border-radius: 10px ;
+    height: 30px;
+    color: #dd6f6f;
+}
+.Navbar button a{
+    text-decoration: none;
+    color: rgb(35, 130, 214);
+}

@@ -3,25 +3,34 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="/styles/style.css">
     <title>Blog</title>
 </head>
 <body>
-    <button><a href="/postPage">Post a blog</a> </button>
+    <div class="Navbar">
+        <button><a href="/postPage">Post a blog</a> </button>
+    </div>
+    
+    <div class="container">
+        <h1>Blogs</h1>
+        <div>
     <%if(data && Array.isArray(data) && data.length > 0) { %> 
         
        <% data.forEach(item => {%>
         <form action="/all" method="post">
-          
-        <p> <%=item.id  %>,<%= item.author %> <%= item.text %></p>
+          <h3> <%=item.id  %></h3>
+        <p> <%= item.text %></p>
+        <p><i><%= item.author %></i></p>
         <input  type="submit" value="Delete" formaction="/delete/<%= item.id %>">
         <input  type="submit" value="Edit" formaction="/edit/<%= item.id %>">
+        <hr>
     </form>
     <%}); %>
         <% } else {%>
         <p>No blogs to show</p>
         <% } %>
-       
-     
+    </div>
+    </div> 
    
     
 </body>

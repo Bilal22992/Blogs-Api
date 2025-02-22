@@ -91,14 +91,16 @@ console.log(blogs.length)
         author:req.body.author,
         text:req.body.text
     }
+    console.log(identity);
     console.log(update);
-    const blogidentity = blogs.findIndex(blog => blog.id=identity);
+    const blogidentity = blogs.findIndex(blog => blog.id===identity);
     
-
+console.log(blogidentity);
     blogs[blogidentity]=update;
     saveDataToFile(blogs);
     res.json(blogs[blogidentity]);
  })
+
 
 
  app.patch("/blog/:id",(req,res)=>{
